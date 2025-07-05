@@ -1,0 +1,397 @@
+<!DOCTYPE html><html lang="bn"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমার পোর্টফোলিও</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&amp;display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #1abc9c;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+        }
+
+        #hero h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #1abc9c;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #16a085;
+        }
+
+        /* About Section */
+        #about {
+            padding: 80px 0;
+            background: #fff;
+            text-align: center;
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        #about p {
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            font-size: 1.1rem;
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            padding: 80px 0;
+            background: #f9f9f9;
+            text-align: center;
+        }
+
+        #portfolio h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .portfolio-item-info {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .portfolio-item-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+
+        .portfolio-item-info p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 80px 0;
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        #contact p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        #contact .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        #contact .contact-info div {
+            background: #34495e;
+            padding: 20px 30px;
+            border-radius: 8px;
+            text-align: left;
+            min-width: 250px;
+        }
+
+        #contact .contact-info div h3 {
+            margin-bottom: 10px;
+            color: #1abc9c;
+        }
+
+        #contact .contact-info div a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #contact .contact-info div a:hover {
+            color: #1abc9c;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            header nav ul li {
+                margin: 0 10px 10px 10px;
+            }
+
+            #hero h2 {
+                font-size: 2.2rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #contact .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #contact .contact-info div {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>আমার পোর্টফোলিও</h1>
+            <nav>
+                <ul>
+                    <li><a href="#hero">হোম</a></li>
+                    <li><a href="#about">আমার সম্পর্কে</a></li>
+                    <li><a href="#portfolio">কাজ</a></li>
+                    <li><a href="#contact">যোগাযোগ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>স্বাগতম! আমি [আপনার নাম]</h2>
+            <p>আমি [আপনার পেশা, যেমন: একজন গ্রাফিক ডিজাইনার/ওয়েব ডেভেলপার/ফটোগ্রাফার]। আমার সৃজনশীল কাজগুলো দেখুন।</p>
+            <a href="#portfolio" class="btn">আমার কাজ দেখুন</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>আমার সম্পর্কে</h2>
+            <p>এখানে আপনার সম্পর্কে বিস্তারিত লিখুন। আপনার দক্ষতা, অভিজ্ঞতা, কাজের ধরন, এবং কেন আপনি আপনার কাজটি ভালোবাসেন তা উল্লেখ করুন। আপনার বিশেষত্ব কি, কিভাবে আপনি ক্লায়েন্টদের সাহায্য করেন, ইত্যাদি বিষয়গুলো যোগ করতে পারেন।</p>
+            <p>উদাহরণস্বরূপ: "আমি গত ৫ বছর ধরে ওয়েব ডেভেলপমেন্ট নিয়ে কাজ করছি। আমি আধুনিক এবং ব্যবহারকারী-বান্ধব ওয়েবসাইট তৈরিতে পারদর্শী। আমার লক্ষ্য হলো ক্লায়েন্টদের চাহিদা অনুযায়ী সেরা ডিজিটাল সমাধান প্রদান করা।"</p>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2>আমার কাজ</h2>
+            <div class="portfolio-grid">
+                <!-- Project 1 -->
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400x220/3498db/ffffff?text=প্রজেক্ট+১" alt="Project 1">
+                    <div class="portfolio-item-info">
+                        <h3>প্রজেক্ট ১: ওয়েবসাইট ডিজাইন</h3>
+                        <p>একটি আধুনিক এবং প্রতিক্রিয়াশীল ওয়েবসাইট ডিজাইন। এই প্রজেক্টে ব্যবহৃত প্রযুক্তি: HTML, CSS, JavaScript।</p>
+                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400x220/2ecc71/ffffff?text=প্রজেক্ট+২" alt="Project 2">
+                    <div class="portfolio-item-info">
+                        <h3>প্রজেক্ট ২: লোগো ডিজাইন</h3>
+                        <p>একটি কোম্পানির জন্য তৈরি লোগো ডিজাইন। ব্র্যান্ডিং এবং ভিজ্যুয়াল আইডেন্টিটির উপর ফোকাস করা হয়েছে।</p>
+                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400x220/e74c3c/ffffff?text=প্রজেক্ট+৩" alt="Project 3">
+                    <div class="portfolio-item-info">
+                        <h3>প্রজেক্ট ৩: মোবাইল অ্যাপ ইউআই</h3>
+                        <p>একটি মোবাইল অ্যাপ্লিকেশনের জন্য ইউজার ইন্টারফেস ডিজাইন। ব্যবহারকারীর অভিজ্ঞতা উন্নত করার উপর জোর দেওয়া হয়েছে।</p>
+                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 (Add more projects as needed) -->
+                <div class="portfolio-item">
+                    <img src="https://via.placeholder.com/400x220/f39c12/ffffff?text=প্রজেক্ট+৪" alt="Project 4">
+                    <div class="portfolio-item-info">
+                        <h3>প্রজেক্ট ৪: ফটোগ্রাফি সিরিজ</h3>
+                        <p>প্রকৃতি ফটোগ্রাফির একটি সিরিজ। রঙ এবং কম্পোজিশনের উপর বিশেষ মনোযোগ দেওয়া হয়েছে।</p>
+                        <a href="#" class="btn">বিস্তারিত দেখুন</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>যোগাযোগ করুন</h2>
+            <p>আমার সাথে কাজ করতে আগ্রহী? নিচে দেওয়া তথ্য ব্যবহার করে আমার সাথে যোগাযোগ করুন।</p>
+            <div class="contact-info">
+                <div>
+                    <h3>ইমেইল</h3>
+                    <p><a href="mailto:your_email@example.com">your_email@example.com</a></p>
+                </div>
+                <div>
+                    <h3>ফোন</h3>
+                    <p><a href="tel:+8801XXXXXXXXX">+8801XXXXXXXXX</a></p>
+                </div>
+                <div>
+                    <h3>ঠিকানা</h3>
+                    <p>আপনার ঠিকানা, শহর, দেশ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© ২০২৪ আমার পোর্টফোলিও। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+
+</body></html>
